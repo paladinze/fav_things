@@ -1,13 +1,14 @@
 # backend/urls.py
 
 from django.contrib import admin
-from django.urls import path, include                 # add this
-from rest_framework import routers                    # add this
-from todo import views                            # add this
+from django.urls import path, include
+from rest_framework import routers
+from movie import views as MovieView
 
-router = routers.DefaultRouter()                      # add this
-router.register(r'todos', views.TodoView, 'todo')     # add this
+router = routers.DefaultRouter()
+router.register(r'movies', MovieView.Movie, 'movie')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),         path('api/', include(router.urls))                # add this
+    path('admin/', admin.site.urls),
+    path('api/', include(router.urls))
 ]
